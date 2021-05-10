@@ -1,0 +1,8 @@
+SEED: 0
+model:
+  algorithm: ball_tree
+  n_neighbors: 3
+  p: 2
+model_path: outputs/model.pkl
+predict_path: outputs/predict.csv
+score_path: outputs/scores.yaml
