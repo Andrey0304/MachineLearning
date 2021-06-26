@@ -1,0 +1,15 @@
+Dividends,Header,Currency,Date,Description,Amount
+Dividends,Header,Currency,Date,Description,Amount
+Dividends,Data,CAD,31/03/2021,SSRM(CA7847301032) Cash Dividend CAD 0.06334 per Share (Ordinary Dividend),190.02
+Dividends,Data,Total,,,190.02
+Dividends,Data,Total in USD,,,151.4478402
+Dividends,Data,EUR,17/03/2021,UNA(GB00B10RZP78) Cash Dividend EUR 0.4268 per Share (Ordinary Dividend),341.44
+Dividends,Data,EUR,29/03/2021,RDSA.DIV (NL00150006B0) Expire Dividend Right (Ordinary Dividend),415.16
+Dividends,Data,EUR,29/03/2021,RDSA.DIV (NL00150006B0) Payment in Lieu of Dividend (Ordinary Dividend),3.63
+Dividends,Data,Total,,,760.23
+Dividends,Data,Total in USD,,,901.751555
+Dividends,Data,USD,18/03/2021,NEM(US6516391066) Cash Dividend USD 0.55 per Share (Ordinary Dividend),385
+Dividends,Data,USD,25/03/2021,GFI(US38059T1060) Cash Dividend USD 0.213383 per Share (Ordinary Dividend),640.15
+Dividends,Data,USD,30/04/2021,QQQ(US46090E1038) Cash Dividend USD 0.39468 per Share (Ordinary Dividend),39.47
+Dividends,Data,Total,,,1064.62
+Dividends,Data,Total Dividends in USD,,,2117.819395
