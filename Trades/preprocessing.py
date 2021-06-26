@@ -1,13 +1,10 @@
 import pandas as pd
 import numpy as np
-import json
 import warnings
 
 warnings.filterwarnings('ignore')
 
 
-# with open('/home/andrey/Desktop/Features.json', 'w') as f:
-#     json.dump(features, f)
 def data_separation(data):
     all_data = {}
     for names in ['Trades',
@@ -58,6 +55,20 @@ def preprocessing_of_trades(data):
         lambda x: x.replace(',', '') if x is not np.nan else x).astype(float)
     data[['Proceeds', 'T. Price']] = data[['Proceeds', 'T. Price']].astype(
         float)
-    #     data['Date/Time'] = data['Date/Time'].astype('datetime64[ns]')
-    #     data = data.sort_values(['Symbol', 'Date/Time'])
+    data['Date/Time'] = pd.to_datetime(data['Date/Time']).dt.date
+
     return data
+
+
+def preprocessing_of_dividends(div, bc):
+    div = div.dropna()
+    div.drop(index=0, inplace=True)
+    div.Description = div.Description.apply(
+        lambda x: x[x.find('(') + 1:x.find(')')])
+    div.reset_index(drop=True, inplace=True)
+    div = div.rename(columns={'Description': 'Security ID'})
+    div.Amount = div.Amount.astype(float)
+    div.Amount = div.Amount.apply(
+        lambda x: x * bc[div.Currency[div.Amount == x].item()])
+
+    return div
