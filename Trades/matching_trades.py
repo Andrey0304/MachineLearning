@@ -73,7 +73,7 @@ def matching_trades(data_trades,
                 'Entry'] + quantity * price) / (count + quantity)
             count += quantity
 
-    predict = sort_by_day(predict)
+    predict = group_by_day(predict)
 
     if data_dividends is not None:
         for symbol in predict[predict.Type == 'Stocks'].Instrument:
@@ -89,7 +89,10 @@ def matching_trades(data_trades,
     return predict
 
 
-def sort_by_day(data):
+def group_by_day(data):
+    data = data.sort_values(
+        ['Type', 'Instrument', 'Closure Dt', 'Quantity']).reset_index(
+        drop=True)
     j = 0
     drop_index = []
     for i in data.index[1:]:
@@ -98,8 +101,8 @@ def sort_by_day(data):
         if value_2.equals(value_1) and data.Quantity[i] * data.Quantity[j] > 0:
             data['Closure'][i] = (data['Closure'][i] * data['Quantity'][i] +
                                   data['Closure'][j] * data['Quantity'][j]) / (
-                                         data['Quantity'][i] +
-                                         data['Quantity'][j])
+                                             data['Quantity'][i] +
+                                             data['Quantity'][j])
             data['Quantity'][i] += data['Quantity'][j]
             data['Result'][i] += data['Result'][j]
             data['Result in BC'][i] += data['Result in BC'][j]
